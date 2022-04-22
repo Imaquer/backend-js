@@ -32,6 +32,10 @@ app.get('/bancos', function (req, res) {
   res.send('Aquí deberían aparecer los bancos')
 })
 
-app.listen(3000, function () {
-  console.log('Example app listening on port 3000!')
-})
+const port = 3000
+if (!module.parent) {
+  app.listen(port, () => console.log(`API escuchando en el puerto ${port}`))
+}
+
+// exportamos la app para hacer tests
+module.exports = app
